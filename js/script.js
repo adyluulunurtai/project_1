@@ -27,10 +27,18 @@ const movieDB = {
 const adv = document.querySelectorAll(".promo__adv img"),
       poster = document.querySelector(".promo__bg"),
       genre = poster.querySelector(".promo__genre"),
+      deleteBtn = document.querySelectorAll(".delete"),
       spisokFilmov = document.querySelector(".promo__interactive-list"),
       input = document.querySelector('.adding__input'),
       form = document.querySelector(".add"),
       btn = form.querySelector("button");
+
+      deleteBtn.forEach((item)=>{
+        item.addEventListener("click",(e)=>{
+        console.log("fff");
+        });
+      });
+     
      
         btn.addEventListener("click",(e)=>{
             e.preventDefault();
@@ -38,10 +46,12 @@ const adv = document.querySelectorAll(".promo__adv img"),
             console.log(movieDB.movies);
             spisokFilmov.innerHTML += ` 
             <li class="promo__interactive-item">
-                ${input.value}
+                ${movieDB.movies.indexOf((input.value))+1} ${input.value}
                 <div class="delete"></div>
             </li>`;
+            
         });
+
           
      
  
