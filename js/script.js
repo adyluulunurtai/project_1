@@ -75,13 +75,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
   
     const sortArr = (arr)=>{
         arr.sort()
-    }
+    };
 
-    sortArr(movieDB.movies);
   
   
     const createMovieList = (films, parent)=>{
         films.innerHTML = "";
+        sortArr(parent)
         parent.forEach((item, i) =>{
             films.innerHTML += ` 
             <li class="promo__interactive-item">
