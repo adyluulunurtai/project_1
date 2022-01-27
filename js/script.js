@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const adv = document.querySelectorAll(".promo__adv img"),
         poster = document.querySelector(".promo__bg"),
         genre = poster.querySelector(".promo__genre"),
-        deleteBtn = document.querySelectorAll(".delete"),
         spisokFilmov = document.querySelector(".promo__interactive-list"),
         input = document.querySelector('.adding__input'),
         movieItem = document.querySelectorAll("promo__interactive-item"),
@@ -37,11 +36,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         checkbox = document.querySelector("[type='checkbox']");
 
 
-        deleteBtn.forEach((item)=>{
-            item.addEventListener("click",(e)=>{
-         console.log("fff");
-         });
-         });
+       
         
         form.addEventListener("submit",(e)=>{
             e.preventDefault();
@@ -84,6 +79,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     sortArr(movieDB.movies);
   
+  
     const createMovieList = (films, parent)=>{
         films.innerHTML = "";
         parent.forEach((item, i) =>{
@@ -92,6 +88,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
             ${i+1} ${item}
                 <div class="delete"></div>
             </li>`;
+        });
+        document.querySelectorAll(".delete").forEach((btn, i)=>{
+            btn.addEventListener("click",(e)=>{
+            btn.parentElement.remove();
+            movieDB.movies.splice(i, 1)
+            createMovieList(spisokFilmov, movieDB.movies);
+         });
         });
        
     };
