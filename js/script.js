@@ -37,19 +37,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
         checkbox = document.querySelector("[type='checkbox']");
 
 
-        //deleteBtn.forEach((item)=>{
-            //item.addEventListener("click",(e)=>{
-        // console.log("fff");
-        // });
-        // });
+        deleteBtn.forEach((item)=>{
+            item.addEventListener("click",(e)=>{
+         console.log("fff");
+         });
+         });
         
         form.addEventListener("submit",(e)=>{
             e.preventDefault();
             let newFilm = input.value;
-            
-            movieDB.movies.push(newFilm);
-            sortArr(movieDB.movies);
-            createMovieList(spisokFilmov, movieDB.movies);
+            if(newFilm){
+                if(newFilm.length >5){
+                    newFilm = `${newFilm.substring(0, 5)}...`
+                }
+                movieDB.movies.push(newFilm);
+                sortArr(movieDB.movies);
+                createMovieList(spisokFilmov, movieDB.movies);
+                if (checkbox.checked){
+                    console.log("eto lyubimyi film");
+                }
+            }
+
+           
+            e.target.reset();
           
         });
 
@@ -83,7 +93,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 <div class="delete"></div>
             </li>`;
         });
+       
     };
+ 
 
     createMovieList(spisokFilmov, movieDB.movies);
 
